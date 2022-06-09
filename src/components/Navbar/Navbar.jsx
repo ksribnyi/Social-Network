@@ -11,6 +11,9 @@ const Navbar = () => {
                 <NavLink to='/dialogs' style={({isActive}) => ({color: isActive ? 'red' : null})}>Messages</NavLink>
             </div>
             <div className={s.item}>
+                <NavLink to='/users' style={({isActive}) => ({color: isActive ? 'red' : null})}>Users</NavLink>
+            </div>
+            <div className={s.item}>
                 <NavLink to='/news' style={({isActive}) => ({color: isActive ? 'red' : null})}>News</NavLink>
             </div>
             <div className={s.item}>
