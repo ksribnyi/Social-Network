@@ -1,7 +1,17 @@
+import React from "react";
 import s from './Profileinfo.module.css'
+import Preloader from "../../common/Preloader/Preloader";
+import UserIcon from "../../../asets/image/user_icon.jpg"
 
 
-const Profileinfo = () => {
+const Profileinfo = (props) => {
+    if (!props.profile ) {
+        return <Preloader/>
+    }
+    if( !props.profile.photos.large){
+        return <img src={UserIcon}/>
+    }
+    debugger
     return (
         <div>
             <div className={s.backimg}>
@@ -10,9 +20,11 @@ const Profileinfo = () => {
             </div>
             <div className={s.discription_block}>
                 <div className={s.user}>
-                    <img src='https://upload.wikimedia.org/wikipedia/commons/9/9a/Gull_portrait_ca_usa.jpg'></img>
+
+                    <img src={props.profile.photos.large}/>
                 </div>
                 <div>
+
                     ava + infa
                 </div>
 

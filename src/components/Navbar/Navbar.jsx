@@ -1,11 +1,12 @@
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
+import {usersAPI} from "../../api/api";
 
 const Navbar = () => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink to='/profile' style={({isActive}) => ({color: isActive ? 'red' : null})}>Profile</NavLink>
+                <NavLink to='/profile/2' style={({isActive}) => ({color: isActive ? 'red' : null})}>Profile</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to='/dialogs' style={({isActive}) => ({color: isActive ? 'red' : null})}>Messages</NavLink>
