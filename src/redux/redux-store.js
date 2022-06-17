@@ -4,6 +4,7 @@ import DialogsReducer from "./dialogsReducer";
 import usersReducer from "./usersReducer";
 import authReducer from "./authReducer";
 import thunkMiddleware from "redux-thunk";
+impo
 
 let reducers = combineReducers({
     profilePage: ProfileReducer,
