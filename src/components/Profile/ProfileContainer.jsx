@@ -3,13 +3,14 @@ import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getStatus, updateStatus, viewProfile} from "../../redux/profileReducer";
 import {withAuthNavigator} from "../hoc/withAuthNavigator";
-import {useParams} from "react-router";
+import {useNavigate, useParams} from "react-router";
 import {compose} from "redux";
 
 const UsersProfileContainer = (props) => {
     let paramId = useParams()
+    let navigate = useNavigate()
     debugger
-    return <ProfileContainer {...props} params={paramId}/>
+    return <ProfileContainer {...props} navigate={navigate} params={paramId}/>
 }
 
 class ProfileContainer extends React.Component {
@@ -17,24 +18,13 @@ class ProfileContainer extends React.Component {
         paramId: this.props.params.uid
     }
     componentDidMount() {
-
-        // if (!this.state.paramId) {
-        //     this.state.paramId = 24434;
-        // }
         this.props.getStatus(this.state.paramId)
         this.props.viewProfile(this.state.paramId)
         debugger
 
     }
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     if (prevProps.paramId !== this.props.params.uid) {
-    //         this.setState({
-    //             paramId: this.props.params.uid
-    //         })
-    //     }
-    // }
-
     render() {
+        if (!this.props.isAuth) return this.props.navigate('/login')
         return (
             <Profile {...this.props} profile={this.props.profile} status={this.props.status}
                      updateStatus={this.props.updateStatus}/>
