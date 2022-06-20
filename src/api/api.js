@@ -17,10 +17,6 @@ export const usersAPI = {
     checkUnfollow(id) {
         return instance.delete(`follow/${id}`).then(response => response.data)
     },
-
-    // myProfile(id){
-    //     return instance.get(`profile/` + id)
-    // },
     usersProfile(userId){
         console.log("метод устарел импользуйте profileAPI")
         return profileAPI.usersProfile(userId)

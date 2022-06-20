@@ -6,10 +6,10 @@ import {withAuthNavigator} from "../hoc/withAuthNavigator";
 import {useNavigate, useParams} from "react-router";
 import {compose} from "redux";
 
+
 const UsersProfileContainer = (props) => {
     let paramId = useParams()
     let navigate = useNavigate()
-    debugger
     return <ProfileContainer {...props} navigate={navigate} params={paramId}/>
 }
 
@@ -18,9 +18,15 @@ class ProfileContainer extends React.Component {
         paramId: this.props.params.uid
     }
     componentDidMount() {
-        this.props.getStatus(this.state.paramId)
-        this.props.viewProfile(this.state.paramId)
-        debugger
+        let userId = this.state.paramId
+        if (!userId) {
+            userId = this.props.authorizedUserId;
+            if (!userId) {
+                this.props.history.push("/login");
+            }
+        }
+        this.props.getStatus(userId)
+        this.props.viewProfile(userId)
 
     }
     render() {
@@ -36,7 +42,9 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth
 })
 
 

@@ -1,13 +1,16 @@
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
-import {profileAPI} from "../../api/api";
+import {connect} from "react-redux";
+import {viewProfile} from "../../redux/profileReducer";
+import React from "react";
 
 
 const Navbar = (props) => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink to={'/profile/' + '24434'} style={({isActive}) => ({color: isActive ? 'red' : null})}>Profile</NavLink>
+                <NavLink to={'/profile/' + props.authorizedUserId}
+                         style={({isActive}) => ({color: isActive ? 'red' : null})}>Profile</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to='/dialogs' style={({isActive}) => ({color: isActive ? 'red' : null})}>Messages</NavLink>
@@ -28,4 +31,10 @@ const Navbar = (props) => {
     )
 }
 
-export default Navbar;
+
+const mapStateToProps = (state) => ({
+    authorizedUserId: state.auth.userId
+})
+
+
+export default connect(mapStateToProps, {viewProfile})(Navbar);
