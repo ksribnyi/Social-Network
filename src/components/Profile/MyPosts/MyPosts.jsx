@@ -22,7 +22,7 @@ const addNewPostForm = (props) => {
 
 let AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(addNewPostForm)
 
-const MyPosts = (props) => {
+const MyPosts = React.memo((props) => {
     let postsElements =
         props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
 
@@ -41,6 +41,6 @@ const MyPosts = (props) => {
             </div>
         </div>
     )
-}
+})
 
 export default MyPosts;

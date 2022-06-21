@@ -56,7 +56,8 @@ const mapStateToProps = (state) => {
 
 
 export default compose(connect(mapStateToProps, {
-    follow, unfollow, setCurrentPage,  toggleFollowingProgress, requestUsers}))(UsersConteiner)
+    follow, unfollow, setCurrentPage, toggleFollowingProgress, requestUsers
+}))(UsersConteiner)
 
 
 
