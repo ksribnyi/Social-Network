@@ -1,7 +1,7 @@
 import React from "react";
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getStatus, updateStatus, viewProfile} from "../../redux/profileReducer";
+import {getStatus, savePhoto, saveProfile, updateStatus, viewProfile} from "../../redux/profileReducer";
 import {withAuthNavigator} from "../hoc/withAuthNavigator";
 import {useNavigate, useParams} from "react-router";
 import {compose} from "redux";
@@ -14,11 +14,9 @@ const UsersProfileContainer = (props) => {
 }
 
 class ProfileContainer extends React.Component {
-    state ={
-        paramId: this.props.params.uid
-    }
-    componentDidMount() {
-        let userId = this.state.paramId
+
+    refreshProfile(){
+        let userId = this.props.params.uid
         if (!userId) {
             userId = this.props.authorizedUserId;
             if (!userId) {
@@ -27,13 +25,21 @@ class ProfileContainer extends React.Component {
         }
         this.props.getStatus(userId)
         this.props.viewProfile(userId)
-
     }
+    componentDidMount() {
+        this.refreshProfile()
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.params.uid !== prevProps.params.uid){
+            this.refreshProfile()
+        }
+    }
+
     render() {
         if (!this.props.isAuth) return this.props.navigate('/login')
         return (
-            <Profile {...this.props} profile={this.props.profile} status={this.props.status}
-                     updateStatus={this.props.updateStatus}/>
+            <Profile {...this.props} isOwner={!!this.props.authorizedUserId} profile={this.props.profile} status={this.props.status}
+                     updateStatus={this.props.updateStatus} savePhoto={this.props.savePhoto}/>
         )
 
 
@@ -51,5 +57,7 @@ let mapStateToProps = (state) => ({
 export default compose(connect(mapStateToProps, {
     viewProfile,
     getStatus,
-    updateStatus
+    updateStatus,
+    savePhoto,
+    saveProfile
 }), withAuthNavigator)(UsersProfileContainer);

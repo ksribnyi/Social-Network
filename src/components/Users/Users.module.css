@@ -1,3 +1,27 @@
+.usersGrid {
+    display: grid;
+    grid-template-areas:
+    "pf  au";
+    grid-template-rows: 161px;
+    grid-template-columns: 200px auto;
+}
+.photoFolowing {
+    grid-area: pf;
+    padding-left: 20px;
+}
+.aboutUsers{
+    grid-area: au;
+}
+.paginator {
+    text-align: center;
+}
+
 .userPhoto {
-    width: 120px;
+    width: 115px;
+}
+
+.usersPage{
+    height: 850px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

@@ -1,15 +1,36 @@
 .header {
     grid-area: h;
-    background-color: aquamarine;
+    background-color: transparent;
 }
 .header img {
-    width: 50px;
+    width: 200px;
+    padding-top: 15px;
 
 }
 .loginBlock {
+    padding-top: 15px;
     float: right;
+    color: white;
 }
-.loginBlock a {
-    color: red;
-    font-size: 25px;
+
+
+.loginBlock .btn{
+    float: right;
+    height: 40px;
+    font-size: 1.5em;
+    width: 150px;
+    background: linear-gradient(135deg, #186d74, #b84317);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 3px solid transparent;
+    border-image: linear-gradient(135deg, #186d74, #b84317);
+    border-image-slice: 1;
+    text-align: center;
+    line-height: 36px;
+    font-weight: bold;
+
+}
+.loginBlock a{
+    vertical-align: center;
+    font-weight: bold;
 }

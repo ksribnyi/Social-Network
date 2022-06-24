@@ -1,3 +1,7 @@
 .selectedPage {
     font-weight: bold;
+    font-size: 15px;
+}
+.pageNumber {
+    padding: 2px;
 }

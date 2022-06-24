@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
-import {Route, Routes, useHistory} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
@@ -14,22 +14,10 @@ import React from "react";
 import {compose} from "redux";
 import {initializeApp} from "./redux/appReducer";
 import Preloader from "./components/common/Preloader/Preloader";
-import {useNavigate} from "react-router";
+import {Navigate} from "react-router";
+import {withRouter} from "./hoc/WithRouter";
 
-export const withRouter = (Component) => {
-    const Wrapper = (props) => {
-        const history = useNavigate();
 
-        return (
-            <Component
-                history={history}
-                {...props}
-            />
-        );
-    };
-
-    return Wrapper;
-};
 
 class App extends React.Component {
     componentDidMount() {
@@ -46,9 +34,8 @@ class App extends React.Component {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path='/profile/:uid' element={<ProfileUserContainer store={this.props.store}/>}>
-                            {/*<Route path=':uid' element={<ProfileUserContainer store={props.store}/>}/>*/}
-                        </Route>
+                        <Route path="/" element={<Navigate to={`/profile/${this.props.authorizedUserId}`} />} />
+                        <Route path='/profile/:uid' element={<ProfileUserContainer store={this.props.store}/>}/>
                         <Route path='/dialogs/' element={<DialogsConteiner store={this.props.store}/>}>
                             <Route path=':id' element={<DialogsConteiner store={this.props.store}/>}/>
                         </Route>
@@ -67,7 +54,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
+    authorizedUserId: state.auth.userId
 })
 
 export default compose(withRouter,

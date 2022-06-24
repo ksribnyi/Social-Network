@@ -1,0 +1,9 @@
+.profile {
+    display: grid;
+    grid-template-areas:
+    "p "
+    "pos";
+    grid-template-rows: 350px 520px ;
+    grid-template-columns: auto;
+}
+

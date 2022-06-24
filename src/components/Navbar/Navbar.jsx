@@ -10,22 +10,40 @@ const Navbar = (props) => {
         <nav className={s.nav}>
             <div className={s.item}>
                 <NavLink to={'/profile/' + props.authorizedUserId}
-                         style={({isActive}) => ({color: isActive ? 'red' : null})}>Profile</NavLink>
+                         style={({isActive}) => ({
+                             color: isActive ? '#186d74' : null,
+                             fontWeight: isActive ? 'bold' : null
+                         })}>Profile</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/dialogs' style={({isActive}) => ({color: isActive ? 'red' : null})}>Messages</NavLink>
+                <NavLink to='/dialogs' style={({isActive}) => ({
+                    color: isActive ? '#186d74' : null,
+                    fontWeight: isActive ? 'bold' : null
+                })}>Messages</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/users' style={({isActive}) => ({color: isActive ? 'red' : null})}>Users</NavLink>
+                <NavLink to='/users' style={({isActive}) => ({
+                    color: isActive ? '#186d74' : null,
+                    fontWeight: isActive ? 'bold' : null
+                })}>Users</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/news' style={({isActive}) => ({color: isActive ? 'red' : null})}>News</NavLink>
+                <NavLink to='/news' style={({isActive}) => ({
+                    color: isActive ? '#186d74' : null,
+                    fontWeight: isActive ? 'bold' : null
+                })}>News</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/music' style={({isActive}) => ({color: isActive ? 'red' : null})}>Music</NavLink>
+                <NavLink to='/music' style={({isActive}) => ({
+                    color: isActive ? '#186d74' : null,
+                    fontWeight: isActive ? 'bold' : null
+                })}>Music</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/settings' style={({isActive}) => ({color: isActive ? 'red' : null})}>Settings</NavLink>
+                <NavLink to='/settings' style={({isActive}) => ({
+                    color: isActive ? '#186d74' : null,
+                    fontWeight: isActive ? 'bold' : null
+                })}>Settings</NavLink>
             </div>
         </nav>
     )

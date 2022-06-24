@@ -6,7 +6,6 @@ import {
     unfollow, toggleFollowingProgress, requestUsers
 } from "../../redux/usersReducer";
 import Users from "./Users";
-import Preloader from "../common/Preloader/Preloader";
 import {compose} from "redux";
 import {
     getCurrentPage,
@@ -29,7 +28,6 @@ class UsersConteiner extends React.Component {
 
     render() {
         return <>
-            {this.props.isFetching ? <Preloader/> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}

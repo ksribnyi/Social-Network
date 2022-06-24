@@ -1,13 +1,37 @@
-.backimg img{
-    width: 1000px;
-}
 .discription_block {
+
+    display: grid;
+    grid-template-areas:
+    "ph in";
+    grid-template-rows: 500px;
+    grid-template-columns: 250px auto;
     padding: 20px;
 }
+.myInfo{
+    grid-area: in;
+    display: grid;
+    grid-template-areas:
+    "s"
+    "i";
+    grid-template-rows: 50px;
+    grid-template-columns: auto;
+    padding-left: 20px;
+}
+.status{
+    grid-area: s;
+}
+.aboutMe {
+    grid-area: i;
+}
+
 .user img {
-    width: 150px;
+    grid-area: ph;
+    width: 250px;
 
 }
 .defPhoto {
-    width: 150px;
+    width: 250px;
+}
+.contact {
+    padding-left: 15px;
 }

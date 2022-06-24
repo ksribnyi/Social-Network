@@ -7,13 +7,14 @@
   "n c";
   grid-template-rows: 70px 1fr;
   grid-template-columns: 2fr 10fr;
-  /*grid-gap: 10px;*/
 }
 
 
 .app-wrapper-content {
   grid-area: c;
-  background-color: brown;
+  background: linear-gradient(133deg, #186d74, #b84317);
+  border-radius: 10px;
+  height: 870px;
 
 }
 

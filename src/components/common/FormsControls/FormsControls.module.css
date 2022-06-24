@@ -1,4 +1,6 @@
 
+
+
 .formControl.error input,
 .formControl.error textarea
 {
@@ -8,9 +10,32 @@
 .formControl.error span {
     color: red;
 }
+.formControl .checkboxs{
+    float: left;
+    margin-top: -10px;
+}
 
 .formSummeryError {
     border: red 1px solid;
     color: red;
     padding: 5px;
+}
+.textfield{
+    background-color: white !important;
+    margin-bottom: 20px !important;
+}
+.loginForm{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btnLogin {
+    margin-top: 10px !important;
+    text-align: center;
+    min-width: 223px !important;
+}
+.loginForm h1 {
+    color: white;
 }
