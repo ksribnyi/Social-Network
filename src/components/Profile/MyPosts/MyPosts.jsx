@@ -4,6 +4,7 @@ import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validator/validator";
 import {Textarea} from "../../common/FormsControls/FormsControls";
+import userPhoto from "../../../asets/image/user_icon.jpg";
 
 const maxLength10 = maxLengthCreator(10)
 
@@ -24,20 +25,25 @@ let AddNewPostFormRedux = reduxForm({form: 'ProfileAddNewPostForm'})(addNewPostF
 
 const MyPosts = React.memo((props) => {
     let postsElements =
-        props.posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>);
-
+        props.posts.map(p => <Post  key={p.id} message={p.message} likesCount={p.likesCount}/>);
     let onAddPost = (values) => {
         props.addPost(values.newPostText)
     }
-
     return (
         <div className={s.posts_block}>
-            <h3>My posts</h3>
-            <div>
-                <AddNewPostFormRedux onSubmit={onAddPost} />
-            </div>
             <div className={s.posts}>
-                {postsElements}
+                <h3>My posts</h3>
+                <div>
+                    <AddNewPostFormRedux onSubmit={onAddPost} />
+                </div>
+                <div className={s.myPost} >
+                    {postsElements}
+                </div>
+            </div>
+
+            <div className={s.friends}>
+                {props.usersFriend.map(u => <div className={s.friendItem} key={u.id}><img alt={'usersPhoto'} src={u.photos.small != null ? u.photos.small : userPhoto}
+                                          className={s.userPhotoFriend}/> {u.name}</div>)}
             </div>
         </div>
     )

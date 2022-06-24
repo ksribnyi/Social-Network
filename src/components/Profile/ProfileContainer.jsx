@@ -5,6 +5,8 @@ import {getStatus, savePhoto, saveProfile, updateStatus, viewProfile} from "../.
 import {withAuthNavigator} from "../hoc/withAuthNavigator";
 import {useNavigate, useParams} from "react-router";
 import {compose} from "redux";
+import {getUsers, getUsersFriend} from "../../redux/usersSelector";
+import {requestUsersFriends} from "../../redux/usersReducer";
 
 
 const UsersProfileContainer = (props) => {
@@ -28,6 +30,7 @@ class ProfileContainer extends React.Component {
     }
     componentDidMount() {
         this.refreshProfile()
+        this.props.requestUsersFriends(this.props.currentPage, 100)
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.props.params.uid !== prevProps.params.uid){
@@ -38,7 +41,7 @@ class ProfileContainer extends React.Component {
     render() {
         if (!this.props.isAuth) return this.props.navigate('/login')
         return (
-            <Profile {...this.props} isOwner={!!this.props.authorizedUserId} profile={this.props.profile} status={this.props.status}
+            <Profile users={this.props.users} {...this.props} isOwner={!!this.props.authorizedUserId} profile={this.props.profile} status={this.props.status}
                      updateStatus={this.props.updateStatus} savePhoto={this.props.savePhoto}/>
         )
 
@@ -51,6 +54,8 @@ let mapStateToProps = (state) => ({
     status: state.profilePage.status,
     authorizedUserId: state.auth.userId,
     isAuth: state.auth.isAuth
+
+
 })
 
 
@@ -59,5 +64,6 @@ export default compose(connect(mapStateToProps, {
     getStatus,
     updateStatus,
     savePhoto,
-    saveProfile
+    saveProfile,
+    requestUsersFriends
 }), withAuthNavigator)(UsersProfileContainer);

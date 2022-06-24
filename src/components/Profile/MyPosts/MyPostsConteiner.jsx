@@ -1,11 +1,13 @@
 import {addPostActionCreator} from "../../../redux/profileReducer";
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
+import {getUsersFriend} from "../../../redux/usersSelector";
 
 const mapStateToProps = (state) => {
     return {
         posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
+        newPostText: state.profilePage.newPostText,
+        usersFriend: getUsersFriend (state)
     }
 }
 

@@ -1,7 +1,41 @@
 .posts_block {
-    padding: 20px;
+
+    grid-area: frpos;
+    display: grid;
+    grid-template-areas:
+    "fr pos";
+    grid-template-rows: 520px ;
+    grid-template-columns: 300px auto;
+
 }
 
+
 .posts {
-    margin: 10px;
+    border-width: 4px;
+    border-style: solid;
+    border-image: linear-gradient(135deg, #b84317,#186d74) 1;
+    padding-left: 50px;
+    grid-area: pos;
+    margin: 20px;
+    overflow: auto
+}
+.myPost{
+
+}
+
+.friends{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    grid-area: fr;
+    border-width: 4px;
+    border-style: solid;
+    border-image: linear-gradient(135deg, #b84317,#186d74) 1;
+    overflow: auto
+}
+.friendItem{
+    padding: 10px;
+}
+.userPhotoFriend{
+    width: 60px;
 }

@@ -14,9 +14,9 @@ import Button from '@mui/material/Button'
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            {createField('outlined',"primary","Email", "email", [required], TextFields)}
-            {createField('outlined',"primary","Password", "password", [required], TextFields, {type: "password"})}
-            {createField("filled","primary",null, "rememberMe", [], Checkboxs, {}, "remember me")}
+            {createField("Email", "email", [required], TextFields,'', '','outlined',"primary")}
+            {createField("Password", "password", [required], TextFields, {type: "password"},'','outlined',"primary")}
+            {createField(null, "rememberMe", [], Checkboxs, {}, "remember me","filled","primary")}
 
             { props.captchaUrl && <img alt={'captcha'} src={props.captchaUrl} />}
             { props.captchaUrl &&  createField('outlined',"primary","Symbols from image", "captcha", [required], TextFields, {}) }

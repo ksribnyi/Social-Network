@@ -1,8 +1,10 @@
 
 .item {
     color: greenyellow;
+    padding: 10px;
 }
 .item img {
+    margin-right: 15px;
     width: 50px;
     border-radius: 50%;
 }

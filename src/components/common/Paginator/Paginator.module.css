@@ -1,7 +1,16 @@
 .selectedPage {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
 }
 .pageNumber {
     padding: 2px;
+    font-size: 20px;
+    vertical-align: middle;
+}
+.btnPrev, .btnNext {
+    max-height: 30px!important;
+}
+
+.paginator{
+    line-height: 30px;
 }

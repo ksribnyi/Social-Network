@@ -6,8 +6,8 @@ import s from './Profile.module.css'
 const Profile = (props) => {
 
     return <div className={s.profile}>
-        <Profileinfo saveProfile={props.saveProfile} profile={props.profile} isOwner={props.isOwner} status={props.status} updateStatus={props.updateStatus} savePhoto={props.savePhoto}/>
-        <MyPostsConteiner/>
+        <Profileinfo  saveProfile={props.saveProfile} profile={props.profile} isOwner={props.isOwner} status={props.status} updateStatus={props.updateStatus} savePhoto={props.savePhoto}/>
+        <MyPostsConteiner />
     </div>
 }
 

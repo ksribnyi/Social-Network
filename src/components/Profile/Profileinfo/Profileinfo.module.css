@@ -1,31 +1,22 @@
-.discription_block {
 
+.discription_block {
     display: grid;
-    grid-template-areas:
-    "ph in";
-    grid-template-rows: 500px;
-    grid-template-columns: 250px auto;
+    grid-area: p;
     padding: 20px;
-}
-.myInfo{
-    grid-area: in;
-    display: grid;
     grid-template-areas:
-    "s"
-    "i";
-    grid-template-rows: 50px;
-    grid-template-columns: auto;
-    padding-left: 20px;
+    "ph i";
+    grid-template-rows: 350px;
+    grid-template-columns: 300px auto;
 }
+.user {
+    grid-area: ph;
+}
+
 .status{
     grid-area: s;
 }
-.aboutMe {
-    grid-area: i;
-}
 
 .user img {
-    grid-area: ph;
     width: 250px;
 
 }
@@ -35,3 +26,35 @@
 .contact {
     padding-left: 15px;
 }
+
+.myInfoBlock{
+    grid-area: i;
+    display: grid;
+    grid-template-areas:
+    "n w"
+    "a s"
+    "c s";
+    grid-template-rows: 70px 50px 230px;
+    grid-template-columns: 300px auto;
+
+}
+
+.myName{
+    grid-area: n;
+}
+.aboutMe {
+    grid-area: a;
+}
+.lookForJob{
+    grid-area: w;
+}
+.skills{
+    grid-area: s;
+}
+.contacts{
+    grid-area: c;
+}
+
+
+
+

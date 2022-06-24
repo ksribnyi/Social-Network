@@ -25,3 +25,8 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+.btnFollow ,
+.btnUnfollow {
+    min-width: 115px !important;
+}

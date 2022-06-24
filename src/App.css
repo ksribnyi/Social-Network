@@ -17,5 +17,20 @@
   height: 870px;
 
 }
+::-webkit-scrollbar{
+  width: 15px;
+
+}
+::-webkit-scrollbar-track{
+  background: linear-gradient(#186d74, #1b8480);
+  border-radius: 25px;
+}
+::-webkit-scrollbar-thumb{
+  background-image: linear-gradient(#b84317,#e8802d);
+  border-radius: 25px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-image: linear-gradient(#e8802d, #b84317);
+}
 
 

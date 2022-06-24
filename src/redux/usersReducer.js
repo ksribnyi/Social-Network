@@ -7,9 +7,11 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
+const SET_USERS_FRIEND = 'SET_USERS_FRIEND';
 
 let initialState = {
     users: [],
+    usersFriend: [],
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
@@ -22,7 +24,6 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                // users: updateObjectInArray(state.users, action.userId, "id", {followed: true})
                 users: state.users.map(u => {
                     if (u.id === action.userId) {
                         return {...u, followed: true}
@@ -42,6 +43,9 @@ const usersReducer = (state = initialState, action) => {
             }
         case SET_USERS: {
             return {...state, users: action.users}
+        }
+        case SET_USERS_FRIEND: {
+            return {...state, users: action.usersFriend}
         }
         case SET_CURRENT_PAGE: {
             return {...state, currentPage: action.currentPage}
@@ -70,6 +74,8 @@ export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId})
 
 export const setUsers = (users) => ({type: SET_USERS, users})
 
+export const setUsersFriends = (usersFriend) => ({type: SET_USERS_FRIEND, usersFriend})
+
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage})
 
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount})
@@ -88,8 +94,18 @@ export const requestUsers = (page, pageSize) => {
         dispatch(setCurrentPage(page))
         let data = await usersAPI.requestUsers(page, pageSize)
         dispatch(toggleIsFetching(false));
-        dispatch(setUsers(data.items));
+        dispatch(setUsersFriends(data.items));
         dispatch(setTotalUsersCount(data.totalCount));
+    }
+}
+export const requestUsersFriends = (page, pageSize) => {
+    return async (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        dispatch(setCurrentPage(page))
+        let data = await usersAPI.requestUsersFriends(page, pageSize)
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        // dispatch(setTotalUsersCount(data.totalCount));
     }
 }
 
