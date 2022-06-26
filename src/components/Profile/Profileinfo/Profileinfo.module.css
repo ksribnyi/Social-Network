@@ -52,9 +52,45 @@
     grid-area: s;
 }
 .contacts{
+
     grid-area: c;
 }
 
+
+.chengeForm{
+    grid-area: i;
+    display: grid;
+    grid-template-areas:
+    "n c"
+    "a c"
+    "w c"
+    "s c"
+    "b c";
+    grid-template-rows: 60px 50px 80px 90px 70px ;
+    grid-template-columns: 300px auto;
+}
+.chengeForm b{
+
+}
+.redName{
+    grid-area: n;
+}
+
+.redAboutMe{
+    grid-area: a;
+}
+.redLookForJob{
+    grid-area: w;
+}
+.redContact{
+    grid-area: c;
+}
+.redSkils{
+    grid-area: s;
+}
+.btnSubmit{
+    grid-area: b;
+}
 
 
 

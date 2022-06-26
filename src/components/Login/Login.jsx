@@ -14,15 +14,15 @@ import Button from '@mui/material/Button'
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            {createField("Email", "email", [required], TextFields,'', '','outlined',"primary")}
-            {createField("Password", "password", [required], TextFields, {type: "password"},'','outlined',"primary")}
-            {createField(null, "rememberMe", [], Checkboxs, {}, "remember me","filled","primary")}
+            {createField("Email", "email", [required], TextFields, '', '', 'outlined', "primary")}
+            {createField("Password", "password", [required], TextFields, {type: "password"}, '', 'outlined', "primary")}
+            {createField(null, "rememberMe", [], Checkboxs, {}, "remember me", "filled", "primary")}
 
-            { props.captchaUrl && <img alt={'captcha'} src={props.captchaUrl} />}
-            { props.captchaUrl &&  createField('outlined',"primary","Symbols from image", "captcha", [required], TextFields, {}) }
+            {props.captchaUrl && <img alt={'captcha'} src={props.captchaUrl}/>}
+            {props.captchaUrl && createField('outlined', "primary", "Symbols from image", "captcha", [required], TextFields, {})}
 
 
-            {props.error && <div>{props.error}</div> }
+            {props.error && <div>{props.error}</div>}
             <div>
                 <Button className={style.btnLogin} type="submit" variant={"contained"} color={"primary"}>Login</Button>
             </div>
@@ -37,7 +37,7 @@ const Login = (props) => {
         props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
     let navigate = useNavigate();
-    if(props.isAuth) {
+    if (props.isAuth) {
         return navigate(`/profile/24434`)
     }
     return <div className={style.loginForm}>

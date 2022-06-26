@@ -4,6 +4,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import UserIcon from "../../../asets/image/user_icon.jpg"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import ProfileDataFormReduxForm from "./ProfileDataForm";
+import {createField, TextFieldform} from "../../common/FormsControls/FormsControls";
 
 
 const Profileinfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
@@ -25,6 +26,7 @@ const Profileinfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
             }
         );
     }
+    debugger
     return (
         <div className={s.profileBlock}>
             <div className={s.discription_block}>
@@ -38,7 +40,7 @@ const Profileinfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
                     <div className={s.aboutMe}>
                         {editMode
                             ? <ProfileDataFormReduxForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
-                            : <ProfileData  goToEditMode={() => {
+                            : <ProfileData goToEditMode={() => {
                                 setEditMode(true)
                             }} profile={profile} isOwner={isOwner} updateStatus={updateStatus} status={status}/>}
                     </div>
@@ -77,8 +79,12 @@ const ProfileData = ({profile, isOwner, goToEditMode, updateStatus, status}) => 
         </div>
 
         <div className={s.contacts}>
-            <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
-            return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+            <b>Contacts</b>: {Object.keys(profile.contacts).map(key => { Object.values(profile.contacts).filter(val => {
+                if (val !== null) {
+                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
+                }
+            })
+
         })}
         </div>
     </div>

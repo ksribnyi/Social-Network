@@ -1,41 +1,55 @@
 import React from "react";
-import {createField, Input, Textarea} from "../../common/FormsControls/FormsControls";
+import {
+    Checkboxs,
+    createField,
+    Input,
+    Textarea,
+    TextFieldform,
+    TextFields
+} from "../../common/FormsControls/FormsControls";
 import {reduxForm} from "redux-form";
+import s from './Profileinfo.module.css'
+import {Button} from "@mui/material";
 
 const ProfileDataForm = ({handleSubmit, profile, error}) => {
-    return <form onSubmit={handleSubmit}>
-        <div><button>save</button></div>
-        {error && <div >
-            {error}
-        </div>
-        }
-        <div>
-            <b>Full name</b>: {createField("Full name", "fullName", [], Input)}
-        </div>
-        <div>
-            <b>Looking for a job</b>: { createField("", "lookingForAJob", [], Input, {type: "checkbox"} )}
+    return <form className={s.chengeForm} onSubmit={handleSubmit}>
+
+        <div className={s.redName}>
+            {createField('Name', "fullName", [], TextFieldform, '', '', 'outlined', "primary")}
         </div>
 
-        <div>
-            <b>My professional skills</b>:
-            { createField("My professional skills", "lookingForAJobDescription", [], Textarea  )}
+        <div className={s.redAboutMe}>
+            {createField("About me", "aboutMe", [], TextFieldform, '', '', 'outlined', "primary")}
+        </div>
+
+        <div className={s.redLookForJob}>
+            <b>Looking for a job</b>:
+            {createField("", "lookingForAJob", [], Checkboxs, {type: "checkbox"}, '', 'outlined', "primary")}
+        </div>
+
+        <div className={s.redContact}>
+            {Object.keys(profile.contacts).map(key => {
+                return <div key={key}>
+                    {createField(key, "contacts." + key, [], TextFieldform, '', '', 'outlined', "primary")}
+                </div>
+            })}
+        </div>
+
+        <div className={s.redSkils}>
+
+            {createField("My professional skills", "lookingForAJobDescription", [], TextFieldform, '', '', 'outlined', "primary")}
         </div>
 
 
-        <div>
-            <b>About me</b>:
-            { createField("About me", "aboutMe", [], Textarea  )}
-        </div>
-        <div>
-            <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
-            return <div key={key} >
-                <b>{key}: {createField(key, "contacts." + key, [], Input)}</b>
-            </div>
-        })}
+        <div className={s.btnSubmit}>
+            <button>save</button>
+            {error && <div>
+                {error}
+            </div>}
         </div>
     </form>
 }
 
-const ProfileDataFormReduxForm = reduxForm({form: 'edit-profile'})(ProfileDataForm)
+const ProfileDataFormReduxForm = reduxForm({form: 'edit-profile', enableReinitialize: true})(ProfileDataForm)
 
 export default ProfileDataFormReduxForm;

@@ -5,6 +5,7 @@ import {getUsersFriend} from "../../../redux/usersSelector";
 
 const mapStateToProps = (state) => {
     return {
+        profile: state.profilePage.profile,
         posts: state.profilePage.posts,
         newPostText: state.profilePage.newPostText,
         usersFriend: getUsersFriend (state)
