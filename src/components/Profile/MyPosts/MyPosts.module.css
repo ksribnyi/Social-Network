@@ -1,5 +1,5 @@
 .posts_block {
-
+    border-radius: 5px;
     grid-area: frpos;
     display: grid;
     grid-template-areas:
@@ -17,13 +17,18 @@
     padding-left: 50px;
     grid-area: pos;
     margin: 20px;
-    overflow: auto
+    overflow: auto;
+    color: aliceblue;
+}
+.posts h3{
+    margin: 10px;
 }
 .myPost{
-
 }
 
 .friends{
+    color: white;
+    font-size: 17px;
     margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -38,4 +43,14 @@
 }
 .userPhotoFriend{
     width: 60px;
+}
+
+.formAddPost{
+    display: flex;
+    margin: auto;
+}
+.formAddPost input{
+    border-color: #b84317!important;
+    overflow:hidden;
+    color: aliceblue;
 }

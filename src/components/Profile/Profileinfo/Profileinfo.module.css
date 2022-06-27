@@ -1,5 +1,7 @@
 
 .discription_block {
+    color: white;
+    font-size: 17px;
     display: grid;
     grid-area: p;
     padding: 20px;
@@ -10,6 +12,10 @@
 }
 .user {
     grid-area: ph;
+    position: relative;
+    z-index: 1;
+    width: 250px;
+    height: 250px;
 }
 
 .status{
@@ -66,7 +72,7 @@
     "w c"
     "s c"
     "b c";
-    grid-template-rows: 60px 50px 80px 90px 70px ;
+    grid-template-rows: 60px 50px 70px 80px 90px ;
     grid-template-columns: 300px auto;
 }
 .chengeForm b{
@@ -92,5 +98,55 @@
     grid-area: b;
 }
 
+
+/*button upload file*/
+.user:hover .position_btn_upload_photo{
+    opacity: 1;
+    transition: opacity 400ms;
+}
+.position_btn_upload_photo{
+    opacity: 0;
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+}
+
+.div_uploadFile p {
+    text-align: center;
+    color: white;
+    padding: 0;
+    margin: 0;
+    vertical-align: center;
+}
+
+.div_uploadFile{
+    display: block;
+    width: 70px;
+    height: 70px;
+    background-color: gray;
+    opacity: 25%;
+    position: relative;
+    border-radius: 5px;
+    line-height: 70px;
+
+}
+
+.uploadFile{
+    margin: 0!important;
+    position: absolute;
+    top: -70px!important;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    opacity: 0;
+    border-radius: 50%;
+}
+.uploadFile input{
+    height: 38px!important;
+}
+
+.div_uploadFile .iconPhoto{
+    width: 70px;
+}
 
 

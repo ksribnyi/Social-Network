@@ -11,6 +11,9 @@
 }
 .aboutUsers{
     grid-area: au;
+    color: white;
+    font-size: 20px;
+    padding-top: 5px;
 }
 .paginator {
     text-align: center;

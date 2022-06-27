@@ -5,6 +5,8 @@ import UserIcon from "../../../asets/image/user_icon.jpg"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import ProfileDataFormReduxForm from "./ProfileDataForm";
 import {createField, TextFieldform} from "../../common/FormsControls/FormsControls";
+import {Button, TextField} from "@mui/material";
+import upPhoto from "../../../asets/image/upload-photo.png"
 
 
 const Profileinfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
@@ -26,20 +28,27 @@ const Profileinfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
             }
         );
     }
-    debugger
     return (
         <div className={s.profileBlock}>
             <div className={s.discription_block}>
                 <div className={s.user}>
                     {!profile.photos.large && <img alt={'defUserPhoto'} className={s.defPhoto} src={UserIcon}/>}
                     <img alt={'myUserPhoto'} src={profile.photos.large}/>
-                    {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
+
+                    <div className={s.position_btn_upload_photo}>
+                        {isOwner && <div className={s.div_uploadFile}>
+                            <p><img className={s.iconPhoto} alt={'upPhoto'} src={upPhoto}/></p>
+                            <TextField className={s.uploadFile} type={'file'}
+                                       style={{height: 80, width: 70, margin: 0, padding: 0}}
+                                       onChange={onMainPhotoSelected}/></div>}
+                    </div>
+
                 </div>
                 <div className={s.myInfo}>
 
                     <div className={s.aboutMe}>
                         {editMode
-                            ? <ProfileDataFormReduxForm initialValues={profile} profile={profile} onSubmit={onSubmit}/>
+                            ? <ProfileDataFormReduxForm profile={profile} onSubmit={onSubmit}/>
                             : <ProfileData goToEditMode={() => {
                                 setEditMode(true)
                             }} profile={profile} isOwner={isOwner} updateStatus={updateStatus} status={status}/>}
@@ -56,7 +65,8 @@ const ProfileData = ({profile, isOwner, goToEditMode, updateStatus, status}) => 
 
         <div className={s.myName}>
             {isOwner && <div>
-                <button onClick={goToEditMode}>edit</button>
+                <Button onClick={goToEditMode} variant={"contained"} style={{background: '#e8802d'}} color={"primary"}
+                        size={'small'}>edit</Button>
             </div>}
             <div>
                 {profile.fullName}
@@ -71,7 +81,7 @@ const ProfileData = ({profile, isOwner, goToEditMode, updateStatus, status}) => 
         </div>
 
         <div className={s.lookForJob}>
-            <b>Looking for a job</b>: {profile.lookingForAJob ? "yes" : "no"}
+            <b>Looking for a job</b>: {profile.lookingForAJob ? "✅" : "❌"}
         </div>
 
         <div className={s.skills}>
@@ -79,20 +89,16 @@ const ProfileData = ({profile, isOwner, goToEditMode, updateStatus, status}) => 
         </div>
 
         <div className={s.contacts}>
-            <b>Contacts</b>: {Object.keys(profile.contacts).map(key => { Object.values(profile.contacts).filter(val => {
-                if (val !== null) {
-                    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
-                }
-            })
-
-        })}
+            <b>Contacts</b>: {Object.keys(profile.contacts).map(key => <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>)}
         </div>
+
     </div>
 }
 
 
 const Contact = ({contactTitle, contactValue}) => {
-    return <div className={s.contact}><b>{contactTitle}</b>: {contactValue}</div>
+    return  contactValue !== null ? <div className={s.contact}><b>{contactTitle}</b>: {contactValue}</div> : ''
 }
 
 export default Profileinfo;
+

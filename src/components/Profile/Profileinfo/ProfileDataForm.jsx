@@ -2,20 +2,18 @@ import React from "react";
 import {
     Checkboxs,
     createField,
-    Input,
-    Textarea,
     TextFieldform,
-    TextFields
 } from "../../common/FormsControls/FormsControls";
 import {reduxForm} from "redux-form";
-import s from './Profileinfo.module.css'
+import s from './Profileinfo.module.css';
 import {Button} from "@mui/material";
+
 
 const ProfileDataForm = ({handleSubmit, profile, error}) => {
     return <form className={s.chengeForm} onSubmit={handleSubmit}>
 
         <div className={s.redName}>
-            {createField('Name', "fullName", [], TextFieldform, '', '', 'outlined', "primary")}
+            {createField ('Name', "fullName", [], TextFieldform, '', '', 'outlined', "primary")}
         </div>
 
         <div className={s.redAboutMe}>
@@ -42,7 +40,7 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
 
 
         <div className={s.btnSubmit}>
-            <button>save</button>
+            <Button type={'submit'} variant={"contained"} style={{width: "225px"}} color={"primary"} size={'small'}>save</Button>
             {error && <div>
                 {error}
             </div>}
@@ -50,6 +48,6 @@ const ProfileDataForm = ({handleSubmit, profile, error}) => {
     </form>
 }
 
-const ProfileDataFormReduxForm = reduxForm({form: 'edit-profile', enableReinitialize: true})(ProfileDataForm)
+const ProfileDataFormReduxForm = reduxForm({form: 'edit_profile'})(ProfileDataForm)
 
 export default ProfileDataFormReduxForm;

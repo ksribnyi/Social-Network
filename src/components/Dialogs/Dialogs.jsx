@@ -20,8 +20,8 @@ const Dialogs = (props) => {
                 {dialogsElements}
             </div>
             <div className={s.messages}>
-                <div>{massagesElements}</div>
-                <div>
+                <div className={s.myMassage}>{massagesElements}</div>
+                <div className={s.formAddNewMassage}>
                     <AddMessageForm onSubmit={addNewMessage}/>
                 </div>
             </div>

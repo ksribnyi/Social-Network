@@ -5,10 +5,11 @@ import {Checkbox, TextareaAutosize, TextField} from "@mui/material";
 
 const FormControl = ({input, meta, child, ...props}) => {
     const hasError = meta.touched && meta.error;
+    console.log(meta.error)
     return (
         <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
-            <div className={styles.checkboxs}>
-                {props.children}
+            <div >
+                {props.children }
                 {props.label}
             </div>
             {hasError && <span>{meta.error}</span>}
@@ -21,7 +22,7 @@ export const TextFields = (props) => {
 }
 export const TextFieldform = (props) => {
     const {input, meta, child, ...restProps} = props
-    return <FormControl  {...props}><TextField size={'small'} margin={'none'} style={{padding: 7}}  {...input} {...restProps}/></FormControl>
+    return <FormControl  {...props}><TextField size={'small'} margin={'none'} style={{padding: 1}}  {...input} {...restProps}/></FormControl>
 }
 
 export const Checkboxs = (props) => {
@@ -31,7 +32,7 @@ export const Checkboxs = (props) => {
 
 export const Textarea = (props) => {
     const {input, meta, child, ...restProps} = props
-    return <FormControl {...props}><TextareaAutosize {...input} {...restProps}/></FormControl>
+    return <FormControl {...props}><TextareaAutosize minRows={2} maxRows={2} {...input} style={{width:'660px', resize: "none", fontSize:'15px'}} {...restProps}/></FormControl>
 }
 
 export const Input = (props) => {
@@ -39,7 +40,7 @@ export const Input = (props) => {
     return <FormControl  {...props}><input {...input} {...restProps}/></FormControl>
 }
 
-export const createField = (placeholder, name, validators, component, props = {}, label, variant = null, color= null, ) => (
+export const createField = (placeholder, name, validators, component, props = {}, label, variant = null, color= null) => (
     <div>
         <span>
             <Field placeholder={placeholder} name={name}
