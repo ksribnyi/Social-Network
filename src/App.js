@@ -18,13 +18,13 @@ import {Navigate} from "react-router";
 import {withRouter} from "./hoc/WithRouter";
 
 
-
 class App extends React.Component {
     componentDidMount() {
         this.props.initializeApp()
     }
+
     render() {
-        if(!this.props.initialized){
+        if (!this.props.initialized) {
             return <Preloader/>
         }
         return (
@@ -34,7 +34,7 @@ class App extends React.Component {
                 <Navbar/>
                 <div className='app-wrapper-content'>
                     <Routes>
-                        <Route path="/" element={<Navigate to={`/profile/${this.props.authorizedUserId}`} />} />
+                        <Route path="/" element={<Navigate to={`/profile/${this.props.authorizedUserId}`}/>}/>
                         <Route path='/profile/:uid' element={<ProfileUserContainer store={this.props.store}/>}/>
                         <Route path='/dialogs/' element={<DialogsConteiner store={this.props.store}/>}>
                             <Route path=':id' element={<DialogsConteiner store={this.props.store}/>}/>
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => ({
 })
 
 export default compose(withRouter,
-    connect(mapStateToProps, {initializeApp})) (App);
+    connect(mapStateToProps, {initializeApp}))(App);
 
 
 

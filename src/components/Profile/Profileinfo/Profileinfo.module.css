@@ -10,6 +10,7 @@
     grid-template-rows: 350px;
     grid-template-columns: 300px auto;
 }
+
 .user {
     grid-area: ph;
     position: relative;
@@ -18,7 +19,7 @@
     height: 250px;
 }
 
-.status{
+.status {
     grid-area: s;
 }
 
@@ -26,44 +27,50 @@
     width: 250px;
 
 }
+
 .defPhoto {
     width: 250px;
 }
+
 .contact {
-    padding-left: 15px;
+    /*padding-left: 15px;*/
 }
 
-.myInfoBlock{
+.myInfoBlock {
     grid-area: i;
     display: grid;
     grid-template-areas:
     "n w"
-    "a s"
-    "c s";
-    grid-template-rows: 70px 50px 230px;
+    "n c"
+    "a c"
+    "s c";
+    grid-template-rows: 50px 40px 100px 160px;
     grid-template-columns: 300px auto;
 
 }
 
-.myName{
+.myName {
     grid-area: n;
 }
+
 .aboutMe {
     grid-area: a;
 }
-.lookForJob{
+
+.lookForJob {
     grid-area: w;
 }
-.skills{
+
+.skills {
     grid-area: s;
 }
-.contacts{
 
+.contacts {
     grid-area: c;
 }
 
 
-.chengeForm{
+.chengeForm {
     grid-area: i;
     display: grid;
     grid-template-areas:
@@ -72,39 +79,54 @@
     "w c"
     "s c"
     "b c";
-    grid-template-rows: 60px 50px 70px 80px 90px ;
+    grid-template-rows: 60px 50px 70px 80px 90px;
     grid-template-columns: 300px auto;
 }
-.chengeForm b{
 
+.chengeForm input {
+    color: white;
 }
-.redName{
+
+.redName {
     grid-area: n;
 }
 
-.redAboutMe{
+.redAboutMe {
     grid-area: a;
 }
-.redLookForJob{
+
+.redLookForJob {
     grid-area: w;
 }
-.redContact{
+
+.redContact {
     grid-area: c;
 }
-.redSkils{
+
+.redContact input {
+    padding: 5px 10px;
+}
+
+.redSkils textarea {
+    color: aliceblue;
+}
+
+.redSkils {
     grid-area: s;
 }
-.btnSubmit{
+
+.btnSubmit {
     grid-area: b;
 }
 
 
 /*button upload file*/
-.user:hover .position_btn_upload_photo{
+.user:hover .position_btn_upload_photo {
     opacity: 1;
     transition: opacity 400ms;
 }
-.position_btn_upload_photo{
+
+.position_btn_upload_photo {
     opacity: 0;
     position: absolute;
     z-index: 9999;
@@ -119,7 +141,7 @@
     vertical-align: center;
 }
 
-.div_uploadFile{
+.div_uploadFile {
     display: block;
     width: 70px;
     height: 70px;
@@ -131,21 +153,22 @@
 
 }
 
-.uploadFile{
-    margin: 0!important;
+.uploadFile {
+    margin: 0 !important;
     position: absolute;
-    top: -70px!important;
+    top: -70px !important;
     left: 0px;
     right: 0px;
     bottom: 0px;
     opacity: 0;
     border-radius: 50%;
 }
-.uploadFile input{
-    height: 38px!important;
+
+.uploadFile input {
+    height: 38px !important;
 }
 
-.div_uploadFile .iconPhoto{
+.div_uploadFile .iconPhoto {
     width: 70px;
 }
 

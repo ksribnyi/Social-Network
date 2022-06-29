@@ -3,10 +3,9 @@ import s from './Profileinfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
 import UserIcon from "../../../asets/image/user_icon.jpg"
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
-import ProfileDataFormReduxForm from "./ProfileDataForm";
-import {createField, TextFieldform} from "../../common/FormsControls/FormsControls";
 import {Button, TextField} from "@mui/material";
 import upPhoto from "../../../asets/image/upload-photo.png"
+import ProfileDataFormFormik from "./ProfileFormik";
 
 
 const Profileinfo = ({profile, status, updateStatus, isOwner, savePhoto, saveProfile}) => {
@@ -48,7 +47,7 @@ const Profileinfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
 
                     <div className={s.aboutMe}>
                         {editMode
-                            ? <ProfileDataFormReduxForm profile={profile} onSubmit={onSubmit}/>
+                            ? <ProfileDataFormFormik  profile={profile} onSubmit={onSubmit} saveProfile={saveProfile} setEditMode={setEditMode}/>
                             : <ProfileData goToEditMode={() => {
                                 setEditMode(true)
                             }} profile={profile} isOwner={isOwner} updateStatus={updateStatus} status={status}/>}
@@ -61,6 +60,8 @@ const Profileinfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
 }
 
 const ProfileData = ({profile, isOwner, goToEditMode, updateStatus, status}) => {
+    let skills = profile.lookingForAJobDescription !== null && profile.lookingForAJobDescription.split(',')
+
     return <div className={s.myInfoBlock}>
 
         <div className={s.myName}>
@@ -68,7 +69,7 @@ const ProfileData = ({profile, isOwner, goToEditMode, updateStatus, status}) => 
                 <Button onClick={goToEditMode} variant={"contained"} style={{background: '#e8802d'}} color={"primary"}
                         size={'small'}>edit</Button>
             </div>}
-            <div>
+            <div style={{fontSize: 20}}>
                 {profile.fullName}
             </div>
             <div className={s.status}>
@@ -77,19 +78,21 @@ const ProfileData = ({profile, isOwner, goToEditMode, updateStatus, status}) => 
         </div>
 
         <div className={s.aboutMe}>
-            <b>About me</b>: {profile.aboutMe}
+            <b>About me</b>
+            <div>{profile.aboutMe}</div>
         </div>
 
         <div className={s.lookForJob}>
-            <b>Looking for a job</b>: {profile.lookingForAJob ? "✅" : "❌"}
+            <b>Looking for a job</b> {profile.lookingForAJob ? "✅" : "❌"}
         </div>
 
         <div className={s.skills}>
-            <b>My professional skills</b>: {profile.lookingForAJobDescription}
+            <b>My professional skills</b>
+            <div>{ skills && skills.map(s => <li>{s}</li>) }</div>
         </div>
 
         <div className={s.contacts}>
-            <b>Contacts</b>: {Object.keys(profile.contacts).map(key => <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>)}
+            <b>Contacts</b> {Object.keys(profile.contacts).map(key => <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>)}
         </div>
 
     </div>

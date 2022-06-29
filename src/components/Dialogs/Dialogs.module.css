@@ -20,22 +20,49 @@
     display: grid;
     padding: 10px;
     grid-template-rows: 760px 100px;
+    grid-template-columns: 800px;
 }
 
 .message {
+
+    width: 750px;
+    border-radius: 15px;
+    margin: 10px;
+    display: flex;
+
+}
+.message:nth-child(even){
+    justify-content: flex-end;
+}
+.message:nth-child(odd){
+    justify-content: flex-start;
+}
+
+.myMassage {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-width: 4px;
+    border-style: solid;
+    border-image: linear-gradient(135deg, #b84317,#186d74) 1;
+    margin: 5px 0;
+}
+
+.formAddMasage{
+    display: flex;
+}
+
+.massageFlex{
+    overflow: auto;
+}
+.massFl{
+    border-radius: 15px;
+    width: max-content;
+    margin: 10px;
     color: aliceblue;
     font-size: 20px;
     background:  #b84317 ;
     border: 1px solid #b84317;
     padding: 5px 10px;
-    width: max-content;
-    border-radius: 15px;
-    margin: 10px;
-}
-.myMassage {
-    overflow: auto;
-}
-
-.formAddMasage{
-    display: flex;
 }
