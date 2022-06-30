@@ -36,7 +36,7 @@
     /*padding-left: 15px;*/
 }
 
-.myInfoBlock {
+.myInfoBlock  {
     grid-area: i;
     display: grid;
     grid-template-areas:
@@ -46,7 +46,12 @@
     "s c";
     grid-template-rows: 50px 40px 100px 160px;
     grid-template-columns: 300px auto;
+    overflow: auto;
+}
 
+.myInfoBlock::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 .myName {

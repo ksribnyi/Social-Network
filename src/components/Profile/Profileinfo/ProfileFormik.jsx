@@ -62,7 +62,7 @@ const ProfileDataFormFormik = ({profile, saveProfile, setEditMode, ...props}) =>
             <div className={s.redSkils}>
                 <TextField
                     size={'small'}
-                    style={{width: '200px', resize: "none", fontSize: '15px', color: 'white'}}
+                    style={{width: '223px', resize: "none", fontSize: '15px', color: 'white'}}
                     multiline
                     rows={2}
                     id="lookingForAJobDescription"
@@ -85,7 +85,7 @@ const ProfileDataFormFormik = ({profile, saveProfile, setEditMode, ...props}) =>
             </div>
             <div className={s.redContact}>
                 {Object.keys(formik.values.contacts).map(key => <div><TextField
-                    style={{marginBottom: 5}}
+                        style={{marginBottom: 5}}
                         size={'small'}
                         id={key}
                         name={`contacts.${key}`}

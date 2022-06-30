@@ -60,7 +60,7 @@ const Profileinfo = ({profile, status, updateStatus, isOwner, savePhoto, savePro
 }
 
 const ProfileData = ({profile, isOwner, goToEditMode, updateStatus, status}) => {
-    let skills = profile.lookingForAJobDescription !== null && profile.lookingForAJobDescription.split(',')
+    let skills = profile.lookingForAJobDescription !== null &&  profile.lookingForAJobDescription.split(',')
 
     return <div className={s.myInfoBlock}>
 
@@ -100,7 +100,7 @@ const ProfileData = ({profile, isOwner, goToEditMode, updateStatus, status}) => 
 
 
 const Contact = ({contactTitle, contactValue}) => {
-    return  contactValue !== null ? <div className={s.contact}><b>{contactTitle}</b>: {contactValue}</div> : ''
+    return  contactValue !== null && contactValue.length > 0 ? <div className={s.contact}><b>{contactTitle}</b>: {contactValue}</div> : ''
 }
 
 export default Profileinfo;
