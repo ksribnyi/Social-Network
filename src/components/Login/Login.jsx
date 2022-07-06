@@ -1,14 +1,12 @@
 import React from "react";
 import {reduxForm} from "redux-form";
-import {Checkboxs, createField, Input, TextFields} from "../common/FormsControls/FormsControls";
+import {Checkboxs, createField, TextFields} from "../common/FormsControls/FormsControls";
 import {required} from "../../utils/validator/validator";
 import {connect} from "react-redux";
 import {login} from "../../redux/authReducer";
 import {useNavigate} from "react-router";
-import style from "./../common/FormsControls/FormsControls.module.css"
-import Button from '@mui/material/Button'
-// import TextField from '@mui/material/TextField';
-// import {Checkbox} from "@mui/material";
+import style from "./../common/FormsControls/FormsControls.module.css";
+import Button from '@mui/material/Button';
 
 
 const LoginForm = (props) => {

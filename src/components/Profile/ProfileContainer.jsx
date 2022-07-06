@@ -5,7 +5,6 @@ import {getStatus, savePhoto, saveProfile, updateStatus, viewProfile} from "../.
 import {withAuthNavigator} from "../hoc/withAuthNavigator";
 import {useNavigate, useParams} from "react-router";
 import {compose} from "redux";
-import {getUsers, getUsersFriend} from "../../redux/usersSelector";
 import {requestUsersFriends} from "../../redux/usersReducer";
 
 

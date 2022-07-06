@@ -31,11 +31,6 @@
 .defPhoto {
     width: 250px;
 }
-
-.contact {
-    /*padding-left: 15px;*/
-}
-
 .myInfoBlock  {
     grid-area: i;
     display: grid;

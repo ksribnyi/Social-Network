@@ -3,7 +3,7 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validator/validator";
-import {Textarea, TextFieldform} from "../../common/FormsControls/FormsControls";
+import {TextFieldform} from "../../common/FormsControls/FormsControls";
 import userPhoto from "../../../asets/image/user_icon.jpg";
 import {Button} from "@mui/material";
 
